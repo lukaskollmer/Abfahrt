@@ -19,6 +19,8 @@ class DepartureTableViewCell : UITableViewCell {
         self.departure = departure
         super.init(style: .value1, reuseIdentifier: nil)
         
+        selectionStyle = .none
+        
         timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true) { _ in
             self.updateTimeRemaining()
         }

@@ -55,8 +55,9 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
         // Always start location updates when the app is opened
-        locationManager.startUpdatingLocation()
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +70,12 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
     }
     
     func updateDeparturesForLocation(_ location: CLLocation) {
-        mvgClient.getNearbyStations(atLocation: location) { stations in
+        mvgClient.getNearbyStations(atLocation: location) { error, stations in
+            if let error = error {
+                self.showError("Error", error.localizedDescription)
+                return;
+            }
+            
             self.nearestStations = stations.sorted { $0.0.distance ?? 0 < $0.1.distance ?? 0 }
             self.tableView.refreshControl?.endRefreshing()
         }

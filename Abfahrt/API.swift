@@ -29,8 +29,12 @@ struct API {
     
     static let `default` = API()
     
+    static var isAvailable: Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
     
-    fileprivate func makeRequest(_ endpoint: Endpoint, _ parameters: Parameters, responseHandler: @escaping (JSON?) -> ()) throws {
+    
+    fileprivate func makeRequest(_ endpoint: Endpoint, _ parameters: Parameters, responseHandler: @escaping (Error?, JSON?) -> ()) throws {
         var url = endpoint.rawValue
         var params = parameters
         
@@ -42,21 +46,21 @@ struct API {
         }
         
         Alamofire.request(url, parameters: params, headers: Credentials.AuthHeader).responseData { response in
-            guard let data = response.data else { responseHandler(nil); return }
+            guard let data = response.data else { responseHandler(response.error, nil); return }
             
-            responseHandler(JSON(data: data))
+            responseHandler(response.error, JSON(data: data))
         }
     }
     
     
     
-    func getAllStations(handler: @escaping ([Station]?) -> ()) {
+    func getAllStations(handler: @escaping (Error?, [Station]?) -> ()) {
         // Querying by name, but passing an empty string will return all stations
         
-        try! makeRequest(.queryStationsByName, ["q" : ""]) { response in
+        try! makeRequest(.queryStationsByName, ["q" : ""]) { error, response in
             
             guard let locations = response?["locations"].array else {
-                handler(nil)
+                handler(error, nil)
                 return
             }
             var stations = [Station]()
@@ -68,21 +72,21 @@ struct API {
                 }
             }
             
-            print("found \(stations.count) stations")
+            print("found \(stations.count) stations") // TODO call handler
         }
     }
     
     
     
-    func getNearbyStations(atLocation location: CLLocation, _ handler: @escaping ([Station]) -> Void) {
+    func getNearbyStations(atLocation location: CLLocation, _ handler: @escaping (Error?, [Station]) -> Void) {
         
         let parameters: Parameters = [
             "latitude" : location.coordinate.latitude,
             "longitude" : location.coordinate.longitude
         ]
         
-        try! makeRequest(.getNearbyStations, parameters) { json in
-            guard let json = json else { handler([]); return; }
+        try! makeRequest(.getNearbyStations, parameters) { error, json in
+            guard let json = json else { handler(error, []); return; }
             
             var stations = [Station]()
             
@@ -92,12 +96,12 @@ struct API {
                 }
             }
             
-            handler(stations)
+            handler(error, stations)
         }
     }
     
     
-    func getDepartures(forStation station: Station, handler: @escaping ([Departure]?) -> ()) {
+    func getDepartures(forStation station: Station, handler: @escaping (Error?, [Departure]?) -> ()) {
         let params: Parameters = [
             "id" : station.id,
             "footway" : 0
@@ -105,10 +109,9 @@ struct API {
         
         var departures = [Departure]()
         
-        try! makeRequest(.departure, params) { json in
+        try! makeRequest(.departure, params) { error, json in
             guard let departuresJSON = json?["departures"].array else {
-                print("no items")
-                handler(nil)
+                handler(error, nil)
                 return
             }
             
@@ -116,7 +119,7 @@ struct API {
                 departures.append(Departure(json: departure, station: station))
             }
             
-            handler(departures)
+            handler(error, departures)
         }
     }
 }

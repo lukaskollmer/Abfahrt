@@ -41,7 +41,11 @@ class DeparturesViewController : UITableViewController {
     }
     
     func refresh() {
-        API.default.getDepartures(forStation: station) { departures in
+        API.default.getDepartures(forStation: station) { error, departures in
+            if let error = error {
+                self.showError("Error", error.localizedDescription)
+                return;
+            }
             self.departures = departures
             self.tableView.refreshControl?.endRefreshing()
         }
