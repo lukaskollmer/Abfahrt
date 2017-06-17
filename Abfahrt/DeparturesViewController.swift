@@ -37,6 +37,8 @@ class DeparturesViewController : UITableViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(openInMaps))
+        
         refresh()
     }
     
@@ -49,6 +51,23 @@ class DeparturesViewController : UITableViewController {
             self.departures = departures
             self.tableView.refreshControl?.endRefreshing()
         }
+    }
+    
+    func openInMaps() {
+        // TODO add a pin to the map
+        
+        // https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
+        // https://developers.google.com/maps/documentation/urls/ios-urlscheme
+        // https://developers.google.com/maps/documentation/ios-sdk/urlscheme
+        
+        let appleMapsUrl  = URL(string: "https://maps.apple.com/?sll=\(station.latitude),\(station.longitude)")!
+        
+        // zoom: int between 0 and 21 
+        let googleMapsUrl = URL(string: "comgooglemaps://?center=\(station.latitude),\(station.longitude)&zoom=17&views=transit")!
+        
+        let googleMapsInstalled = UIApplication.shared.canOpenURL(googleMapsUrl)
+        
+        UIApplication.shared.open(googleMapsInstalled ? googleMapsUrl : appleMapsUrl)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
