@@ -43,6 +43,8 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 
     override func viewDidLoad() {
