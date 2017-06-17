@@ -25,7 +25,17 @@ class DepartureTableViewCell : UITableViewCell {
             self.updateTimeRemaining()
         }
         
-        textLabel?.text = "\(departure.label) - \(departure.destination)"
+        var text = ""
+        
+        if ["u", "s"].contains(departure.product) {
+            text += departure.product.uppercased()
+        }
+        
+        text += "\(departure.label) - \(departure.destination)"
+        
+        textLabel?.text = text
+        textLabel?.textColor = UIColor(hexString: departure.lineBackgroundColor)
+        
         
         updateTimeRemaining()
     }
