@@ -52,6 +52,8 @@
 		5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
 		5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		5DFFF5361EF555090090B768 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Quiddestraße.gpx"; sourceTree = "<group>"; };
+		5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		78462ABA644D007247FBC858 /* Pods-AbfahrtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbfahrtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AbfahrtTests/Pods-AbfahrtTests.debug.xcconfig"; sourceTree = "<group>"; };
 		812C788CCFB283C6B9044CFF /* Pods-Abfahrt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abfahrt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Abfahrt/Pods-Abfahrt.release.xcconfig"; sourceTree = "<group>"; };
 		8891D54B844DDA7BC546D5F0 /* Pods_AbfahrtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbfahrtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,8 @@
 				5D290DA31EF534BC00E63E89 /* Departure.swift */,
 				5D290D9E1EF52CF000E63E89 /* Station.swift */,
 				5DFFF5361EF555090090B768 /* Extensions.swift */,
+				5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */,
+				5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */,
 				5D290D811EF52CDE00E63E89 /* Main.storyboard */,
 				5D290D841EF52CDE00E63E89 /* Assets.xcassets */,
 				5D290D861EF52CDE00E63E89 /* LaunchScreen.storyboard */,
