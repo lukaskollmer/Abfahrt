@@ -19,16 +19,27 @@ class DepartureTableViewCell : UITableViewCell {
         self.departure = departure
         super.init(style: .value1, reuseIdentifier: nil)
         
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            self.updateLabels()
+        timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true) { _ in
+            self.updateTimeRemaining()
         }
         
-        updateLabels()
+        textLabel?.text = "\(departure.label) - \(departure.destination)"
+        
+        updateTimeRemaining()
     }
     
-    func updateLabels() {
-        textLabel?.text = "\(departure.label) - \(departure.destination)"
-        detailTextLabel?.text = "\(Int(departure.departureTime.timeIntervalSinceNow / 60)) min"
+    func updateTimeRemaining() {
+        let secondsLeft = departure.departureTime.timeIntervalSinceNow
+        
+        let timeLeft: String
+        
+        if abs(secondsLeft) < 60 {
+            timeLeft = "\(Int(secondsLeft)) sec"
+        } else {
+            timeLeft = "\(Int(secondsLeft / 60)) min"
+        }
+        
+        detailTextLabel?.text = timeLeft
     }
     
     required init?(coder aDecoder: NSCoder) {
