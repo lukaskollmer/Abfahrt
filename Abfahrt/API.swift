@@ -34,7 +34,7 @@ struct API {
     }
     
     
-    fileprivate func makeRequest(_ endpoint: Endpoint, _ parameters: Parameters, responseHandler: @escaping (Error?, JSON?) -> ()) throws {
+    fileprivate func makeRequest(_ endpoint: Endpoint, _ parameters: Parameters, clearCache: Bool = false, responseHandler: @escaping (Error?, JSON?) -> ()) throws {
         var url = endpoint.rawValue
         var params = parameters
         
@@ -43,6 +43,10 @@ struct API {
             url += String(id)
             
             params.removeValue(forKey: "id")
+        }
+        
+        if clearCache {
+            URLCache.shared.removeAllCachedResponses()
         }
         
         Alamofire.request(url, parameters: params, headers: Credentials.AuthHeader).responseData { response in
@@ -54,13 +58,13 @@ struct API {
     
     
     
-    func getAllStations(handler: @escaping (Error?, [Station]?) -> ()) {
+    func getAllStations(handler: @escaping (Error?, [Station]) -> ()) {
         // Querying by name, but passing an empty string will return all stations
         
         try! makeRequest(.queryStationsByName, ["q" : ""]) { error, response in
             
             guard let locations = response?["locations"].array else {
-                handler(error, nil)
+                handler(error, [])
                 return
             }
             var stations = [Station]()
@@ -68,11 +72,10 @@ struct API {
             for stationInfo in locations {
                 if let station = Station(json: stationInfo) {
                     stations.append(station)
-                    print(station.id, station.type, station.name)
                 }
             }
             
-            print("found \(stations.count) stations") // TODO call handler
+            handler(nil, stations)
         }
     }
     
@@ -109,7 +112,7 @@ struct API {
         
         var departures = [Departure]()
         
-        try! makeRequest(.departure, params) { error, json in
+        try! makeRequest(.departure, params, clearCache: true) { error, json in
             guard let departuresJSON = json?["departures"].array else {
                 handler(error, nil)
                 return
