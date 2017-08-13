@@ -10,16 +10,16 @@ import Foundation
 import SwiftyJSON
 
 public enum Line {
-    case bus([String])
-    case nachtbus([String])
+    case bus(Int)
+    case nachtbus(Int)
     
-    case tram([String])
-    case nachttram([String])
+    case tram(Int)
+    case nachttram(Int)
     
-    case ubahn([String])
-    case sbahn([String])
+    case ubahn(Int)
+    case sbahn(Int)
     
-    case other([String])
+    case other(Int)
 }
 
 
@@ -78,34 +78,37 @@ public struct Station: Hashable {
         
         
         for (key, value) in lines {
-            let lineNumbers = value.arrayValue.map { $0.stringValue }
+            let lineNumbers = value.arrayValue.map { $0.intValue }
             
-            let newLine = { () -> Line? in
-                switch key {
-                case "bus":
-                    return .bus(lineNumbers)
-                case "nachtbus":
-                    return .nachtbus(lineNumbers)
-                    
-                case "tram":
-                    return .tram(lineNumbers)
-                case "nachttram":
-                    return .nachttram(lineNumbers)
-                    
-                case "ubahn":
-                    return .ubahn(lineNumbers)
-                case "sbahn":
-                    return .sbahn(lineNumbers)
-                    
-                case "otherlines":
-                    return .other(lineNumbers)
-                default: return nil
+            for lineNumber in lineNumbers {
+                let newLine = { () -> Line? in
+                    switch key {
+                    case "bus":
+                        return .bus(lineNumber)
+                    case "nachtbus":
+                        return .nachtbus(lineNumber)
+                        
+                    case "tram":
+                        return .tram(lineNumber)
+                    case "nachttram":
+                        return .nachttram(lineNumber)
+                        
+                    case "ubahn":
+                        return .ubahn(lineNumber)
+                    case "sbahn":
+                        return .sbahn(lineNumber)
+                        
+                    case "otherlines":
+                        return .other(lineNumber)
+                    default: return nil
+                    }
+                }()
+                
+                if let newLine = newLine {
+                    parsedLines.append(newLine)
                 }
-            }()
-            
-            if let newLine = newLine {
-                parsedLines.append(newLine)
             }
+            
             
         }
         

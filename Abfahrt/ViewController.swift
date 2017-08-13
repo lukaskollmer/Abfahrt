@@ -50,6 +50,11 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        mvgClient.getInterruptions { error, interruptions in
+            interruptions.forEach {
+                print($0.title)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

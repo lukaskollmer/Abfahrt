@@ -25,6 +25,8 @@ struct API {
         case getNearbyStations = "https://www.mvg.de/fahrinfo/api/location/nearby"
         
         case departure = "https://www.mvg.de/fahrinfo/api/departure/"
+        
+        case interruptions = "https://www.mvg.de/.rest/betriebsaenderungen/api/interruptions"
     }
     
     static let `default` = API()
@@ -125,4 +127,19 @@ struct API {
             handler(error, departures)
         }
     }
+    
+    func getInterruptions(handler: @escaping (Error?, [Interruption]) -> ()) {
+        try! makeRequest(.interruptions, [:], clearCache: true) { error, json in
+            guard let interruptionsJSON = json?["interruption"].array else {
+                handler(error, [])
+                return
+            }
+            
+            let interruptions: [Interruption] = interruptionsJSON.map { Interruption(json: $0) }
+            
+            handler(nil, interruptions)
+        }
+    }
 }
+
+

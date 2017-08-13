@@ -23,7 +23,7 @@ struct Departure {
     
     
     init(json: JSON, station: Station) {
-        self.departureTime = Date(timeIntervalSince1970: TimeInterval(json["departureTime"].intValue / 1000))
+        self.departureTime = Date(millisecondsSince1970: json["departureTime"].intValue)
         self.product       = json["product"].stringValue
         self.label         = json["label"].stringValue
         self.destination   = json["destination"].stringValue

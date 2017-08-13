@@ -21,6 +21,7 @@
 		5DF13D471EF542D3006F69B7 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */; };
 		5DF13D491EF54A6D006F69B7 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */; };
 		5DFFF5371EF555090090B768 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF5361EF555090090B768 /* Extensions.swift */; };
+		807C48091F4060A500CAD35D /* Interruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48081F4060A500CAD35D /* Interruption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Quiddestraße.gpx"; sourceTree = "<group>"; };
 		5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		78462ABA644D007247FBC858 /* Pods-AbfahrtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbfahrtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AbfahrtTests/Pods-AbfahrtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		807C48081F4060A500CAD35D /* Interruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interruption.swift; sourceTree = "<group>"; };
 		812C788CCFB283C6B9044CFF /* Pods-Abfahrt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abfahrt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Abfahrt/Pods-Abfahrt.release.xcconfig"; sourceTree = "<group>"; };
 		8891D54B844DDA7BC546D5F0 /* Pods_AbfahrtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbfahrtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95908159FFD46E70F6B1F04C /* Pods-AbfahrtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbfahrtTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AbfahrtTests/Pods-AbfahrtTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */,
 				5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */,
 				5D290D9D1EF52CF000E63E89 /* API.swift */,
+				807C48081F4060A500CAD35D /* Interruption.swift */,
 				5D290DA31EF534BC00E63E89 /* Departure.swift */,
 				5D290D9E1EF52CF000E63E89 /* Station.swift */,
 				5DFFF5361EF555090090B768 /* Extensions.swift */,
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF13D471EF542D3006F69B7 /* DeparturesViewController.swift in Sources */,
+				807C48091F4060A500CAD35D /* Interruption.swift in Sources */,
 				5D290D801EF52CDE00E63E89 /* ViewController.swift in Sources */,
 				5D290DA01EF52CF000E63E89 /* API.swift in Sources */,
 				5DFFF5371EF555090090B768 /* Extensions.swift in Sources */,
