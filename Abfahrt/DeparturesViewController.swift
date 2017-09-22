@@ -37,12 +37,12 @@ class DeparturesViewController : UITableViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(openInMaps))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "🗺️", style: .plain, target: self, action: #selector(openInMaps))
         
         refresh()
     }
     
-    func refresh() {
+    @objc func refresh() {
         API.default.getDepartures(forStation: station) { error, departures in
             if let error = error {
                 self.showError("Error", error.localizedDescription)
@@ -53,7 +53,7 @@ class DeparturesViewController : UITableViewController {
         }
     }
     
-    func openInMaps() {
+    @objc func openInMaps() {
         // TODO add a pin to the map
         
         // https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
