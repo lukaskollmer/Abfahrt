@@ -20,6 +20,8 @@
 		5DF13D471EF542D3006F69B7 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */; };
 		5DF13D491EF54A6D006F69B7 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */; };
 		5DFFF5371EF555090090B768 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF5361EF555090090B768 /* Extensions.swift */; };
+		803CEE691F754DC4002EB5C4 /* Quiddestraße.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */; };
+		803CEE6A1F754DC6002EB5C4 /* Hauptbahnhof.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */; };
 		807C48091F4060A500CAD35D /* Interruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48081F4060A500CAD35D /* Interruption.swift */; };
 /* End PBXBuildFile section */
 
@@ -244,7 +246,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D290D881EF52CDE00E63E89 /* LaunchScreen.storyboard in Resources */,
+				803CEE6A1F754DC6002EB5C4 /* Hauptbahnhof.gpx in Resources */,
 				5D290D851EF52CDE00E63E89 /* Assets.xcassets in Resources */,
+				803CEE691F754DC4002EB5C4 /* Quiddestraße.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
