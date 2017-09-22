@@ -21,8 +21,8 @@ class DepartureTableViewCell : UITableViewCell {
         
         selectionStyle = .none
         
-        timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true) { _ in
-            self.updateTimeRemaining()
+        timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true) { [weak self] _ in
+            self?.updateTimeRemaining()
         }
         
         var text = ""
