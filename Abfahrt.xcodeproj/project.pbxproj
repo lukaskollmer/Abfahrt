@@ -11,7 +11,6 @@
 		3C666980F9091F26C42C2738 /* Pods_Abfahrt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2813B8D0D6F171A86E250941 /* Pods_Abfahrt.framework */; };
 		5D290D7E1EF52CDE00E63E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D290D7D1EF52CDE00E63E89 /* AppDelegate.swift */; };
 		5D290D801EF52CDE00E63E89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D290D7F1EF52CDE00E63E89 /* ViewController.swift */; };
-		5D290D831EF52CDE00E63E89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D290D811EF52CDE00E63E89 /* Main.storyboard */; };
 		5D290D851EF52CDE00E63E89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D290D841EF52CDE00E63E89 /* Assets.xcassets */; };
 		5D290D881EF52CDE00E63E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D290D861EF52CDE00E63E89 /* LaunchScreen.storyboard */; };
 		5D290D931EF52CDF00E63E89 /* AbfahrtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D290D921EF52CDF00E63E89 /* AbfahrtTests.swift */; };
@@ -22,6 +21,7 @@
 		5DF13D491EF54A6D006F69B7 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */; };
 		5DFFF5371EF555090090B768 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF5361EF555090090B768 /* Extensions.swift */; };
 		807C48091F4060A500CAD35D /* Interruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48081F4060A500CAD35D /* Interruption.swift */; };
+		807C480B1F406F8500CAD35D /* InterruptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C480A1F406F8500CAD35D /* InterruptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		5D290D7A1EF52CDE00E63E89 /* Abfahrt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Abfahrt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D290D7D1EF52CDE00E63E89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D290D7F1EF52CDE00E63E89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5D290D821EF52CDE00E63E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D290D841EF52CDE00E63E89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D290D871EF52CDE00E63E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D290D891EF52CDE00E63E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		78462ABA644D007247FBC858 /* Pods-AbfahrtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbfahrtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AbfahrtTests/Pods-AbfahrtTests.debug.xcconfig"; sourceTree = "<group>"; };
 		807C48081F4060A500CAD35D /* Interruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interruption.swift; sourceTree = "<group>"; };
+		807C480A1F406F8500CAD35D /* InterruptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterruptionsViewController.swift; sourceTree = "<group>"; };
 		812C788CCFB283C6B9044CFF /* Pods-Abfahrt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abfahrt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Abfahrt/Pods-Abfahrt.release.xcconfig"; sourceTree = "<group>"; };
 		8891D54B844DDA7BC546D5F0 /* Pods_AbfahrtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbfahrtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95908159FFD46E70F6B1F04C /* Pods-AbfahrtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbfahrtTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AbfahrtTests/Pods-AbfahrtTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 				5D290D7D1EF52CDE00E63E89 /* AppDelegate.swift */,
 				5D290D7F1EF52CDE00E63E89 /* ViewController.swift */,
 				5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */,
+				807C480A1F406F8500CAD35D /* InterruptionsViewController.swift */,
 				5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */,
 				5D290D9D1EF52CF000E63E89 /* API.swift */,
 				807C48081F4060A500CAD35D /* Interruption.swift */,
@@ -136,7 +137,6 @@
 				5DFFF5361EF555090090B768 /* Extensions.swift */,
 				5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */,
 				5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */,
-				5D290D811EF52CDE00E63E89 /* Main.storyboard */,
 				5D290D841EF52CDE00E63E89 /* Assets.xcassets */,
 				5D290D861EF52CDE00E63E89 /* LaunchScreen.storyboard */,
 				5D290D891EF52CDE00E63E89 /* Info.plist */,
@@ -204,17 +204,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Lukas Kollmer";
 				TargetAttributes = {
 					5D290D791EF52CDE00E63E89 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = A485NLSB8K;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					5D290D8D1EF52CDF00E63E89 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = A485NLSB8K;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 5D290D791EF52CDE00E63E89;
 					};
@@ -246,7 +248,6 @@
 			files = (
 				5D290D881EF52CDE00E63E89 /* LaunchScreen.storyboard in Resources */,
 				5D290D851EF52CDE00E63E89 /* Assets.xcassets in Resources */,
-				5D290D831EF52CDE00E63E89 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF13D471EF542D3006F69B7 /* DeparturesViewController.swift in Sources */,
+				807C480B1F406F8500CAD35D /* InterruptionsViewController.swift in Sources */,
 				807C48091F4060A500CAD35D /* Interruption.swift in Sources */,
 				5D290D801EF52CDE00E63E89 /* ViewController.swift in Sources */,
 				5D290DA01EF52CF000E63E89 /* API.swift in Sources */,
@@ -388,14 +390,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5D290D811EF52CDE00E63E89 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5D290D821EF52CDE00E63E89 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5D290D861EF52CDE00E63E89 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -417,7 +411,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -425,7 +421,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -467,7 +467,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -475,7 +477,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -510,7 +516,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.lukas.Abfahrt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -524,7 +531,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.lukas.Abfahrt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -539,7 +547,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.lukas.AbfahrtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Abfahrt.app/Abfahrt";
 			};
 			name = Debug;
@@ -555,7 +564,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vip.lukas.AbfahrtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Abfahrt.app/Abfahrt";
 			};
 			name = Release;
