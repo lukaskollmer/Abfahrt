@@ -45,16 +45,14 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        // todo: maybe in the future
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "🚧", style: .plain, target: self, action: #selector(showInterruptions))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        mvgClient.getInterruptions { error, interruptions in
-            interruptions.forEach {
-                print($0.title)
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +68,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func refresh() {
+    @objc func refresh() {
         self.locationManager.startUpdatingLocation()
     }
     
@@ -81,7 +79,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
                 return;
             }
             
-            self.nearestStations = stations.sorted { $0.0.distance ?? 0 < $0.1.distance ?? 0 }
+            self.nearestStations = stations.sorted { $0.distance ?? 0 < $1.distance ?? 0 }
             self.tableView.refreshControl?.endRefreshing()
         }
     }
