@@ -42,7 +42,7 @@ class DeparturesViewController : UITableViewController {
         refresh()
     }
     
-    @objc func refresh() {
+    func refresh() {
         API.default.getDepartures(forStation: station) { error, departures in
             if let error = error {
                 self.showError("Error", error.localizedDescription)
@@ -53,7 +53,7 @@ class DeparturesViewController : UITableViewController {
         }
     }
     
-    @objc func openInMaps() {
+    func openInMaps() {
         // TODO add a pin to the map
         
         // https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
