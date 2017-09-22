@@ -35,6 +35,8 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         
         title = "Nearby Stations"
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         locationManager.delegate = self
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,7 +46,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        //navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // todo: maybe in the future
         //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "🚧", style: .plain, target: self, action: #selector(showInterruptions))
@@ -68,7 +70,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func refresh() {
+    func refresh() {
         self.locationManager.startUpdatingLocation()
     }
     
