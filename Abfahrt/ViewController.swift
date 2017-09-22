@@ -70,7 +70,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func refresh() {
+    @objc func refresh() {
         self.locationManager.startUpdatingLocation()
     }
     
@@ -79,6 +79,15 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
             if let error = error {
                 self.showError("Error", error.localizedDescription)
                 return;
+            }
+            
+            guard !stations.isEmpty else {
+                let alert = UIAlertController(title: "No stations found", message: "We were unable to find any nearby stations. Please keep in mind that this app only works in Munich", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: .default) { _ in
+                    self.refresh()
+                })
+                self.present(alert, animated: true)
+                return
             }
             
             self.nearestStations = stations.sorted { $0.distance ?? 0 < $1.distance ?? 0 }
