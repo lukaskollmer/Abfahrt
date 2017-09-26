@@ -128,6 +128,19 @@ struct API {
         }
     }
     
+    
+    func getStation(withId id: Int, handler: @escaping (Error?, Station?) -> Void) {
+        
+        try! makeRequest(.queryStationById, ["q" : id]) { error, json in
+            guard let stationJSON = json?["locations"].array?.first else {
+                handler(error, nil)
+                return
+            }
+            
+            handler(nil, Station.init(json: stationJSON))
+        }
+    }
+    
     func getInterruptions(handler: @escaping (Error?, [Interruption]) -> ()) {
         try! makeRequest(.interruptions, [:], clearCache: true) { error, json in
             guard let interruptionsJSON = json?["interruption"].array else {
