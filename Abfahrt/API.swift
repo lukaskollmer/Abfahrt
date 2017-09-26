@@ -59,7 +59,6 @@ struct API {
     }
     
     
-    
     func getAllStations(handler: @escaping (Error?, [Station]) -> ()) {
         // Querying by name, but passing an empty string will return all stations
         
@@ -80,7 +79,6 @@ struct API {
             handler(nil, stations)
         }
     }
-    
     
     
     func getNearbyStations(atLocation location: CLLocation, _ handler: @escaping (Error?, [Station]) -> Void) {
