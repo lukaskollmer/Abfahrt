@@ -64,7 +64,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate, UIViewCo
         super.viewWillAppear(animated)
         
         SpringBoardShortcutManager.shortcutHandler = { station in
-            self.didSelect(station: station)
+            self.showDepartures(for: station, animated: false)
         }
         
         // Always start location updates when the app is opened
@@ -124,11 +124,11 @@ class ViewController: UITableViewController, CLLocationManagerDelegate, UIViewCo
         }
     }
     
-    func didSelect(station: Station) {
+    func showDepartures(for station: Station, animated: Bool = true) {
         SpringBoardShortcutManager.add(station: station)
         
         let vc = DeparturesViewController(station: station)
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: animated)
     }
     
     // MARK: Table View
@@ -159,7 +159,7 @@ class ViewController: UITableViewController, CLLocationManagerDelegate, UIViewCo
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelect(station: nearestStations[indexPath.row])
+        showDepartures(for: nearestStations[indexPath.row])
     }
     
     
