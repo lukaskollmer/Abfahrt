@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UITableViewController, CLLocationManagerDelegate {
+class ViewController: UITableViewController, CLLocationManagerDelegate, UIViewControllerPreviewingDelegate {
     
     // Location stuff
     let locationManager = CLLocationManager()
@@ -51,6 +51,8 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         
         // todo: maybe in the future
         //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "🚧", style: .plain, target: self, action: #selector(showInterruptions))
+        
+        setup3dTouch()
     }
 
     override func viewDidLoad() {
@@ -73,6 +75,29 @@ class ViewController: UITableViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: 3D-Touch
+    func setup3dTouch() {
+        guard traitCollection.forceTouchCapability == .available else { return }
+        
+        self.registerForPreviewing(with: self, sourceView: self.view)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let indexPath = self.tableView.indexPathForRow(at: location)!
+        let station = nearestStations[indexPath.row]
+        
+        return UINavigationController(rootViewController: DeparturesViewController(station: station))
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let departuresViewController = (viewControllerToCommit as! UINavigationController).visibleViewController else { return }
+        
+        navigationController?.pushViewController(departuresViewController, animated: true)
+    }
+    
+    
+    // MARK: stations stuff
     
     @objc func refresh() {
         self.locationManager.startUpdatingLocation()
