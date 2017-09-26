@@ -16,7 +16,8 @@ struct SpringBoardShortcutManager {
     
     static func add(station: Station) {
         let info = ["stationId": station.id]
-        let newItem = UIApplicationShortcutItem(type: "station", localizedTitle: station.name, localizedSubtitle: station.place, icon: nil, userInfo: info)
+        let subtitle = station.services.map { $0.description }.joined(separator: ", ")
+        let newItem = UIApplicationShortcutItem(type: "station", localizedTitle: station.name, localizedSubtitle: subtitle, icon: nil, userInfo: info)
         
         var shortcuts = UIApplication.shared.shortcutItems ?? []
         // Make sure the selected station isn't already a shortcut. todo: if the selected station is already in the shortcuts, move it to the top
