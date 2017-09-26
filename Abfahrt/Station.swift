@@ -22,20 +22,20 @@ public enum Line {
     case other(Int)
 }
 
-public enum Service: String, CustomStringConvertible {
-    case bus, tram, ubahn, sbahn
+public enum Service: CustomStringConvertible {
+    case bus, tram, ubahn, sbahn, fähre, other
     
     private static let mapping: [String: Service] = [
         "Bus": .bus,
         "U-Bahn": .ubahn,
         "S-Bahn": .sbahn,
         "Tram": .tram,
+        "Fähre": .fähre,
+        "z": .other
     ]
     
     private static var singleLetterMapping: [String: Service] = {
-        return Dictionary(uniqueKeysWithValues: Service.mapping.map { (key: String, value: Service) in
-            return (String(key.first!).lowercased(), value)
-        })
+        return Dictionary(uniqueKeysWithValues: Service.mapping.map { (String($0.first!).lowercased(), $1) })
     }()
     
     init(_ string: String) {
@@ -43,6 +43,7 @@ public enum Service: String, CustomStringConvertible {
     }
     
     public var description: String {
+        guard self != .other else { return "Other" }
         return Service.mapping.key(forValue: self)!
     }
 }
@@ -71,6 +72,8 @@ public struct Station: Hashable {
     
     public let services: [Service]
     
+    public let json: JSON
+    
     /// Distance from the search location
     public let distance: Int?
     
@@ -86,8 +89,10 @@ public struct Station: Hashable {
             let longitude = json["longitude"].float,
             let place = json["place"].string,
             let lines = json["lines"].dictionary,
-            let services = json["products"].array
+            let products = json["products"].array
             else { return nil }
+        
+        self.json = json
         
         self.name = name
         self.id = id
@@ -97,7 +102,7 @@ public struct Station: Hashable {
         self.latitude = latitude
         self.longitude = longitude
         self.place = place
-        self.services = services.map { Service($0.stringValue) }
+        self.services = products.map { Service($0.stringValue) }.filter { $0 != .other }
         
         self.distance = json["distance"].int
         
