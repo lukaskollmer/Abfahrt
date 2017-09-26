@@ -39,3 +39,11 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 }
+
+// https://stackoverflow.com/a/41389319/2513803
+extension Dictionary where Value: Equatable {
+    func key(forValue value: Value) -> Key? {
+        return first { $0.1 == value }?.0
+    }
+}
+
