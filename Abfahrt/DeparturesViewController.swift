@@ -27,11 +27,6 @@ class DeparturesViewController : UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("DEINIT DEPARTURES VIEW CONTROLLER")
-        //SpringBoardShortcutManager.shortcutHandler = nil
-    }
-    
     override func loadView() {
         super.loadView()
         
