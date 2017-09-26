@@ -22,6 +22,31 @@ public enum Line {
     case other(Int)
 }
 
+public enum Service: String, CustomStringConvertible {
+    case bus, tram, ubahn, sbahn
+    
+    private static let mapping: [String: Service] = [
+        "Bus": .bus,
+        "U-Bahn": .ubahn,
+        "S-Bahn": .sbahn,
+        "Tram": .tram,
+    ]
+    
+    private static var singleLetterMapping: [String: Service] = {
+        return Dictionary(uniqueKeysWithValues: Service.mapping.map { (key: String, value: Service) in
+            return (String(key.first!).lowercased(), value)
+        })
+    }()
+    
+    init(_ string: String) {
+        self = Service.singleLetterMapping[string]!
+    }
+    
+    public var description: String {
+        return Service.mapping.key(forValue: self)!
+    }
+}
+
 
 // TODO make decodable
 
@@ -44,6 +69,8 @@ public struct Station: Hashable {
     
     public let lines: [Line]
     
+    public let services: [Service]
+    
     /// Distance from the search location
     public let distance: Int?
     
@@ -58,7 +85,8 @@ public struct Station: Hashable {
             let latitude = json["latitude"].float,
             let longitude = json["longitude"].float,
             let place = json["place"].string,
-            let lines = json["lines"].dictionary
+            let lines = json["lines"].dictionary,
+            let services = json["products"].array
             else { return nil }
         
         self.name = name
@@ -69,6 +97,7 @@ public struct Station: Hashable {
         self.latitude = latitude
         self.longitude = longitude
         self.place = place
+        self.services = services.map { Service($0.stringValue) }
         
         self.distance = json["distance"].int
         
