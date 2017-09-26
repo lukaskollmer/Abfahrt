@@ -9,7 +9,7 @@
 import UIKit
 
 class DeparturesViewController : UITableViewController {
-    let station: Station
+    private(set) var station: Station!
     
     var departures: [Departure]? {
         didSet {
@@ -27,10 +27,13 @@ class DeparturesViewController : UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("DEINIT DEPARTURES VIEW CONTROLLER")
+        //SpringBoardShortcutManager.shortcutHandler = nil
+    }
+    
     override func loadView() {
         super.loadView()
-        
-        title = station.name
         
         tableView.register(DepartureTableViewCell.self, forCellReuseIdentifier: DepartureTableViewCell.Identifier)
         
@@ -42,7 +45,19 @@ class DeparturesViewController : UITableViewController {
         refresh()
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        SpringBoardShortcutManager.shortcutHandler = { [weak self] station in
+            self?.station = station
+            self?.refresh()
+        }
+    }
+    
     @objc func refresh() {
+        title = station.name
+        
         API.default.getDepartures(forStation: station) { error, departures in
             if let error = error {
                 self.showError("Error", error.localizedDescription)
