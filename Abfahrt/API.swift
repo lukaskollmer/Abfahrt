@@ -36,7 +36,7 @@ struct API {
     }
     
     
-    fileprivate func makeRequest(_ endpoint: Endpoint, _ parameters: Parameters, clearCache: Bool = false, responseHandler: @escaping (Error?, JSON?) -> ()) throws {
+    fileprivate func makeRequest(_ endpoint: Endpoint, _ parameters: Parameters, clearCache: Bool = false, responseHandler: @escaping (Error?, JSON?) -> Void) throws {
         var url = endpoint.rawValue
         var params = parameters
         
@@ -106,7 +106,7 @@ struct API {
     }
     
     
-    func getDepartures(forStation station: Station, handler: @escaping (Error?, [Departure]?) -> ()) {
+    func getDepartures(forStation station: Station, handler: @escaping (Error?, [Departure]?) -> Void) {
         let params: Parameters = [
             "id" : station.id,
             "footway" : 0
