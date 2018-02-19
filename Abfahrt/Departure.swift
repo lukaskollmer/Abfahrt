@@ -34,4 +34,17 @@ struct Departure {
         
         self.station = station
     }
+    
+    
+    func nicelyFormattedDescription() -> String {
+        var text = ""
+        
+        if ["u", "s"].contains(product) {
+            text += product.uppercased()
+        }
+        
+        text += "\(label) - \(destination)"
+        
+        return text
+    }
 }

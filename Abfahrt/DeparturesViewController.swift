@@ -17,6 +17,7 @@ class DeparturesViewController : UITableViewController {
         }
     }
     
+    
     init(station: Station) {
         self.station = station
         
@@ -39,7 +40,6 @@ class DeparturesViewController : UITableViewController {
         
         refresh()
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -92,5 +92,32 @@ class DeparturesViewController : UITableViewController {
         let cell = DepartureTableViewCell(departure: departures![indexPath.row])
         
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let departure = departures![indexPath.row]
+        
+        let makeRemindMeAction = { (minutes: TimeInterval, color: UIColor) -> UITableViewRowAction in
+            let action = UITableViewRowAction(style: .default, title: "t - \(Int(minutes)) min") { action, indexPath in
+                
+                NotificationManager.default.addNotification(for: departure, timeInterval: minutes * 60)
+            }
+            
+            action.backgroundColor = color
+            
+            return action
+        }
+        
+        let mappings: [TimeInterval: UIColor] = [
+            10: .gray,
+             5: .blue,
+             2: .red
+        ]
+        return mappings.map(makeRemindMeAction)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }

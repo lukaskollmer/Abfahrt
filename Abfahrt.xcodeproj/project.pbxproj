@@ -20,6 +20,7 @@
 		5DF13D471EF542D3006F69B7 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */; };
 		5DF13D491EF54A6D006F69B7 /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */; };
 		5DFFF5371EF555090090B768 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF5361EF555090090B768 /* Extensions.swift */; };
+		800405822039DC3A003C0DC9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800405812039DC3A003C0DC9 /* NotificationManager.swift */; };
 		803CEE691F754DC4002EB5C4 /* Quiddestraße.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */; };
 		803CEE6A1F754DC6002EB5C4 /* Hauptbahnhof.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */; };
 		806BBA571F7A89CC00A7882F /* SpringBoardShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BBA561F7A89CC00A7882F /* SpringBoardShortcutManager.swift */; };
@@ -57,6 +58,7 @@
 		5DFFF5381EF5571C0090B768 /* Quiddestraße.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Quiddestraße.gpx"; sourceTree = "<group>"; };
 		5DFFF5391EF557650090B768 /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		78462ABA644D007247FBC858 /* Pods-AbfahrtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbfahrtTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AbfahrtTests/Pods-AbfahrtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		800405812039DC3A003C0DC9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		806BBA561F7A89CC00A7882F /* SpringBoardShortcutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringBoardShortcutManager.swift; sourceTree = "<group>"; };
 		807C48081F4060A500CAD35D /* Interruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interruption.swift; sourceTree = "<group>"; };
 		812C788CCFB283C6B9044CFF /* Pods-Abfahrt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Abfahrt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Abfahrt/Pods-Abfahrt.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				5D290D7D1EF52CDE00E63E89 /* AppDelegate.swift */,
 				5D290D7F1EF52CDE00E63E89 /* ViewController.swift */,
 				5DF13D461EF542D3006F69B7 /* DeparturesViewController.swift */,
+				800405812039DC3A003C0DC9 /* NotificationManager.swift */,
 				5DF13D481EF54A6D006F69B7 /* DepartureTableViewCell.swift */,
 				5D290D9D1EF52CF000E63E89 /* API.swift */,
 				807C48081F4060A500CAD35D /* Interruption.swift */,
@@ -366,6 +369,7 @@
 				807C48091F4060A500CAD35D /* Interruption.swift in Sources */,
 				5D290D801EF52CDE00E63E89 /* ViewController.swift in Sources */,
 				5D290DA01EF52CF000E63E89 /* API.swift in Sources */,
+				800405822039DC3A003C0DC9 /* NotificationManager.swift in Sources */,
 				5DFFF5371EF555090090B768 /* Extensions.swift in Sources */,
 				806BBA571F7A89CC00A7882F /* SpringBoardShortcutManager.swift in Sources */,
 				5D290DA11EF52CF000E63E89 /* Station.swift in Sources */,

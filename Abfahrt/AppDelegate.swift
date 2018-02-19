@@ -30,5 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SpringBoardShortcutManager.shortcutHandler?(station)
         }
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        NotificationManager.default.removeOldNotifications()
+    }
 }
 
