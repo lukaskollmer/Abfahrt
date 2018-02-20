@@ -52,9 +52,17 @@ struct API {
         }
         
         Alamofire.request(url, parameters: params, headers: Credentials.AuthHeader).responseData { response in
-            guard let data = response.data else { responseHandler(response.error, nil); return }
+            guard let data = response.data else {
+                responseHandler(response.error, nil)
+                return
+            }
             
-            responseHandler(response.error, JSON(data: data))
+            do {
+                let json = try JSON(data: data)
+                responseHandler(response.error, json)
+            } catch {
+                responseHandler(error, nil)
+            }
         }
     }
     
