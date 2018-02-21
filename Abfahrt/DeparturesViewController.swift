@@ -109,11 +109,13 @@ class DeparturesViewController : UITableViewController {
             return action
         }
         
+        let now = Date()
         let mappings: [TimeInterval: UIColor] = [
             10: .gray,
              5: .blue,
              2: .red
-        ]
+        ].filter { now < departure.departureTime.addingTimeInterval(-($0.key * 60)) }
+        
         return mappings.map(makeRemindMeAction)
     }
     
