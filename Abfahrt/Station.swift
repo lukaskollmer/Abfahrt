@@ -34,12 +34,13 @@ public enum Service: CustomStringConvertible {
         "z": .other
     ]
     
-    private static var singleLetterMapping: [String: Service] = {
-        return Dictionary(uniqueKeysWithValues: Service.mapping.map { (String($0.first!).lowercased(), $1) })
+    private static var apiMapping: [String: Service] = {
+        return Dictionary(uniqueKeysWithValues: Service.mapping.map { ($0.replacingOccurrences(of: "-", with: "").uppercased(), $1) })
+        
     }()
     
     init(_ string: String) {
-        self = Service.singleLetterMapping[string]!
+        self = Service.apiMapping[string]!
     }
     
     public var description: String {
