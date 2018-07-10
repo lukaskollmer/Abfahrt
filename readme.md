@@ -2,7 +2,7 @@
 > 🚏🚍 Get upcoming departures for the Munich Public Transport System
 
 
-![](https://files.lukaskollmer.me/embed/abfahrt0.png)
+![](https://lukaskollmer.s3.amazonaws.com/embed/abfahrt0.png)
 
 
 ## License
